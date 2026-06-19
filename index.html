@@ -121,24 +121,24 @@
   .contact-wrap .links a:hover{background:var(--cream);color:var(--ink);}
   footer{padding:30px 6vw;text-align:center;font-size:12px;font-weight:600;opacity:.85;background:var(--ink);color:var(--cream);}
 
-  /* قسم "الآن" — وظيفتين متزامنتين */
-  .s-it.now{display:block;padding:130px 6vw;}
-  .now-wrap{position:relative;z-index:3;max-width:1180px;margin:0 auto;}
-  .now-head{max-width:840px;margin:0 auto 50px;text-align:center;}
-  .now-head .now-intro{margin:16px auto 0;color:rgba(255,248,238,.92);}
-  .now-head .ar{margin:10px auto 0;color:rgba(255,248,238,.8);}
-  .jobs{display:grid;grid-template-columns:1fr 1fr;gap:24px;}
-  @media(max-width:860px){.jobs{grid-template-columns:1fr;}}
-  .job-card{background:#fff;color:var(--ink);border:2px solid var(--ink);border-radius:22px;box-shadow:6px 6px 0 var(--ink);padding:30px 28px;will-change:transform;}
-  .job-head{display:flex;align-items:center;gap:14px;margin-bottom:18px;}
-  .job-head .jic{width:56px;height:56px;border-radius:15px;display:flex;align-items:center;justify-content:center;color:var(--cream);flex:none;position:relative;overflow:hidden;}
-  .job-head .jic::after{content:"";position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,.3),transparent 55%);}
-  .job-head .jic svg{width:32px;height:32px;position:relative;z-index:1;}
-  .job-head h3{font-family:var(--d);font-size:17px;line-height:1.12;color:var(--ink);}
-  .job-head .period{font-size:12px;font-weight:700;color:#7a7790;margin-top:4px;}
-  .job-card ul{list-style:none;display:flex;flex-direction:column;gap:11px;}
-  .job-card li{font-size:14px;line-height:1.55;color:#3c3a55;font-weight:500;padding-left:22px;position:relative;}
-  .job-card li::before{content:"▹";position:absolute;left:0;top:0;color:var(--blue);font-weight:800;}
+  /* CH05 — override scene flex so cards can sit below the hero view */
+  .s-it{display:block;}
+  .s-it .inner{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;padding:120px 6vw;max-width:none;margin:0;box-sizing:border-box;}
+  @media(max-width:860px){.s-it .inner{grid-template-columns:1fr;gap:30px;padding:100px 6vw 60px;}}
+  /* CH05 job cards — dark style to match site palette */
+  .ch5-cards{display:grid;grid-template-columns:1fr 1fr;gap:24px;max-width:1180px;margin:0 auto;padding:0 6vw 100px;position:relative;z-index:3;}
+  @media(max-width:860px){.ch5-cards{grid-template-columns:1fr;padding:0 5vw 80px;}}
+  .ch5-card{background:rgba(23,23,52,.65);border:2px solid rgba(255,248,238,.15);border-radius:22px;padding:30px 28px;backdrop-filter:blur(8px);will-change:transform;}
+  .ch5-head{display:flex;align-items:center;gap:14px;margin-bottom:18px;}
+  .ch5-head .jic{width:56px;height:56px;border-radius:15px;display:flex;align-items:center;justify-content:center;color:var(--cream);flex:none;position:relative;overflow:hidden;}
+  .ch5-head .jic::after{content:"";position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,.3),transparent 55%);}
+  .ch5-head .jic svg{width:32px;height:32px;position:relative;z-index:1;}
+  .ch5-head h3{font-family:var(--d);font-size:17px;line-height:1.12;color:var(--cream);}
+  .ch5-role{font-size:12px;font-weight:700;color:rgba(255,248,238,.55);margin-top:4px;}
+  .ch5-card ul{list-style:none;display:flex;flex-direction:column;gap:11px;}
+  .ch5-card li{font-size:14px;line-height:1.55;color:rgba(255,248,238,.85);font-weight:500;padding-left:22px;position:relative;}
+  .ch5-card li::before{content:"▹";position:absolute;left:0;top:0;color:var(--amber);font-weight:800;}
+  .ch5-card b{color:var(--cream);}
 
   /* أنميشن داخل الـ SVG */
   .pulse{transform-box:fill-box;transform-origin:center;animation:pulse 2s ease-in-out infinite;}
@@ -312,72 +312,113 @@
   </div>
 </section>
 
-<!-- ===== CH 05 — NOW (وظيفتين متزامنتين) ===== -->
-<section class="scene s-it now" data-scene="IT Specialist" data-color="#2aa7ff">
-  <div class="shape blob" style="width:200px;height:200px;background:var(--pink);bottom:6%;left:4%;opacity:.85" data-speed="3"></div>
+<!-- ===== CH 05 — IN RIYADH ===== -->
+<section class="scene s-it" data-scene="IT Specialist" data-color="#2aa7ff">
+  <div class="shape blob" style="width:200px;height:200px;background:var(--pink);bottom:14%;left:4%;opacity:.8" data-speed="3"></div>
   <div class="shape tri" style="border-left:36px solid transparent;border-right:36px solid transparent;border-bottom:64px solid var(--amber);top:9%;right:7%" data-speed="-2.6"></div>
   <div class="shape sq" style="width:50px;height:50px;background:var(--coral);top:16%;left:9%" data-speed="2.4"></div>
-  <div class="now-wrap">
-    <div class="now-head">
+  <div class="inner">
+    <div class="text">
       <span class="chip reveal">CHAPTER 05</span>
+      <div class="yr reveal">2025 — NOW · RIYADH</div>
       <h2 class="split">In Riyadh</h2>
-      <p class="now-intro split">As an IT Specialist in Riyadh, I build, secure and automate IT — from Linux &amp; Docker servers and cloud to ERP systems, networks and security.</p>
+      <p class="split">As an <b>IT Specialist</b>, I build, secure and automate IT infrastructure — Linux &amp; Docker servers, ERP systems, cloud, networks and security.</p>
       <p class="ar split">أخصائي تقنية معلومات في الرياض — خوادم وسحابة وأنظمة ERP وشبكات وأمن معلومات.</p>
     </div>
-    <div class="jobs">
-      <div class="job-card">
-        <div class="job-head">
-          <div class="jic" style="background:linear-gradient(135deg,#4b3bff,#8b7bff)">
-            <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round">
-              <circle cx="32" cy="13" r="2.5" fill="currentColor" stroke="none"/>
-              <line x1="32" y1="15" x2="32" y2="48"/><line x1="14" y1="22" x2="50" y2="22"/><line x1="24" y1="50" x2="40" y2="50"/>
-              <line x1="14" y1="22" x2="14" y2="30"/><line x1="50" y1="22" x2="50" y2="30"/>
-              <path d="M6 30 a8 7 0 0 0 16 0" fill="currentColor" stroke="none"/>
-              <path d="M42 30 a8 7 0 0 0 16 0" fill="currentColor" stroke="none"/>
-            </svg>
-          </div>
-          <div>
-            <h3>Fahad Alabdulqader Law Firm</h3>
-            <div class="period">IT Specialist · Riyadh</div>
-          </div>
+    <div class="art pop" data-speed="1.8">
+      <svg viewBox="0 0 400 320" xmlns="http://www.w3.org/2000/svg">
+        <!-- Server rack -->
+        <rect x="130" y="40" width="150" height="225" rx="10" fill="#171734"/>
+        <!-- Rack units -->
+        <rect x="142" y="54" width="126" height="24" rx="5" fill="#1a6eb5"/>
+        <rect x="142" y="86" width="126" height="24" rx="5" fill="#1a6eb5"/>
+        <rect x="142" y="118" width="126" height="24" rx="5" fill="#1a6eb5"/>
+        <rect x="142" y="150" width="126" height="24" rx="5" fill="#1a6eb5"/>
+        <rect x="142" y="182" width="126" height="24" rx="5" fill="#1a6eb5"/>
+        <rect x="142" y="214" width="126" height="24" rx="5" fill="#1a6eb5"/>
+        <!-- Drive slots -->
+        <rect x="148" y="58" width="78" height="16" rx="3" fill="#0d1a2e" opacity=".6"/>
+        <rect x="148" y="90" width="78" height="16" rx="3" fill="#0d1a2e" opacity=".6"/>
+        <rect x="148" y="122" width="78" height="16" rx="3" fill="#0d1a2e" opacity=".6"/>
+        <rect x="148" y="154" width="78" height="16" rx="3" fill="#0d1a2e" opacity=".6"/>
+        <rect x="148" y="186" width="78" height="16" rx="3" fill="#0d1a2e" opacity=".6"/>
+        <rect x="148" y="218" width="78" height="16" rx="3" fill="#0d1a2e" opacity=".6"/>
+        <!-- Status lights -->
+        <circle cx="253" cy="66" r="5" fill="#16c8b0" class="blink"/>
+        <circle cx="253" cy="98" r="5" fill="#ffc23a" class="blink d1"/>
+        <circle cx="253" cy="130" r="5" fill="#16c8b0" class="blink d2"/>
+        <circle cx="253" cy="162" r="5" fill="#ff5e8a" class="pulse"/>
+        <circle cx="253" cy="194" r="5" fill="#16c8b0" class="blink"/>
+        <circle cx="253" cy="226" r="5" fill="#ffc23a" class="blink d1"/>
+        <!-- Network cables -->
+        <g fill="none" stroke="#ffc23a" stroke-width="4" stroke-linecap="round">
+          <path d="M130 66 C 60 66, 36 110, 28 152"/>
+          <path d="M130 130 C 70 130, 46 200, 38 244"/>
+          <path d="M280 98 C 350 98, 362 52, 372 28"/>
+          <path d="M280 194 C 348 194, 362 244, 372 266"/>
+        </g>
+        <!-- Endpoint nodes -->
+        <circle cx="26" cy="157" r="15" fill="#ff5e8a" stroke="#171734" stroke-width="4" class="pulse"/>
+        <circle cx="34" cy="249" r="15" fill="#ffc23a" stroke="#171734" stroke-width="4" class="pulse d1"/>
+        <circle cx="374" cy="24" r="15" fill="#16c8b0" stroke="#171734" stroke-width="4" class="blink"/>
+        <circle cx="375" cy="270" r="15" fill="#9b5bff" stroke="#171734" stroke-width="4" class="blink d2"/>
+      </svg>
+    </div>
+  </div>
+  <!-- Job cards — dark style matching site palette -->
+  <div class="ch5-cards">
+    <div class="ch5-card">
+      <div class="ch5-head">
+        <div class="jic" style="background:linear-gradient(135deg,#4b3bff,#8b7bff)">
+          <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round">
+            <circle cx="32" cy="13" r="2.5" fill="currentColor" stroke="none"/>
+            <line x1="32" y1="15" x2="32" y2="48"/><line x1="14" y1="22" x2="50" y2="22"/><line x1="24" y1="50" x2="40" y2="50"/>
+            <line x1="14" y1="22" x2="14" y2="30"/><line x1="50" y1="22" x2="50" y2="30"/>
+            <path d="M6 30 a8 7 0 0 0 16 0" fill="currentColor" stroke="none"/>
+            <path d="M42 30 a8 7 0 0 0 16 0" fill="currentColor" stroke="none"/>
+          </svg>
         </div>
-        <ul>
-          <li>Manage all IT infrastructure: workstations, printers, network gear, CCTV &amp; peripherals.</li>
-          <li>Lead end-to-end <b>Odoo ERP</b> implementation — legal case management, contract tracking &amp; client workflows.</li>
-          <li>Build custom Odoo modules with VS Code, Claude Code &amp; Cowork (AI-assisted automation).</li>
-          <li>Administer the firm's website (faafirm.com): DNS, hosting &amp; domains.</li>
-          <li>Manage Microsoft 365 Admin Center &amp; Azure — cloud identity, email &amp; infrastructure.</li>
-          <li>Produce Arabic legal content &amp; SEO articles; run social media &amp; Google Analytics.</li>
-          <li>Install &amp; maintain CCTV, switches, routers &amp; access points; handle IT procurement.</li>
-        </ul>
-      </div>
-      <div class="job-card">
-        <div class="job-head">
-          <div class="jic" style="background:linear-gradient(135deg,#16c8b0,#5fe3cf)">
-            <svg viewBox="0 0 64 64">
-              <g class="rot">
-                <circle cx="32" cy="32" r="14" fill="currentColor"/>
-                <g fill="currentColor"><rect x="28.5" y="8" width="7" height="11" rx="1.5"/><rect x="28.5" y="45" width="7" height="11" rx="1.5"/><rect x="8" y="28.5" width="11" height="7" rx="1.5"/><rect x="45" y="28.5" width="11" height="7" rx="1.5"/></g>
-                <g fill="currentColor" transform="rotate(45 32 32)"><rect x="28.5" y="8" width="7" height="11" rx="1.5"/><rect x="28.5" y="45" width="7" height="11" rx="1.5"/><rect x="8" y="28.5" width="11" height="7" rx="1.5"/><rect x="45" y="28.5" width="11" height="7" rx="1.5"/></g>
-                <circle cx="32" cy="32" r="6" fill="#171734"/>
-              </g>
-            </svg>
-          </div>
-          <div>
-            <h3>Aqaalem for Operation &amp; Maintenance</h3>
-            <div class="period">IT Specialist · Riyadh</div>
-          </div>
+        <div>
+          <h3>Fahad Alabdulqader Law Firm</h3>
+          <div class="ch5-role">IT Specialist · Riyadh</div>
         </div>
-        <ul>
-          <li>Provide on-site &amp; remote end-user support for hardware, software, printers &amp; connectivity; minimize downtime.</li>
-          <li>Build &amp; maintain <b>Ubuntu servers</b> and <b>Docker</b> containers for internal services.</li>
-          <li>Manage user &amp; access administration — accounts, permissions &amp; policies; endpoint readiness.</li>
-          <li>Administer email &amp; productivity services and day-to-day IT operations.</li>
-          <li>Support LAN connectivity — switching, DHCP/DNS &amp; troubleshooting.</li>
-          <li>Operate CCTV, access control / attendance &amp; IP telephony systems.</li>
-          <li>Administer website, hosting &amp; domains (GoDaddy); own IT procurement &amp; vendor coordination.</li>
-        </ul>
       </div>
+      <ul>
+        <li>Manage all IT infrastructure: workstations, printers, network gear, CCTV &amp; peripherals.</li>
+        <li>Lead end-to-end <b>Odoo ERP</b> implementation — legal case management, contract tracking &amp; client workflows.</li>
+        <li>Build custom Odoo modules with VS Code, Claude Code &amp; Cowork (AI-assisted automation).</li>
+        <li>Administer the firm's website (faafirm.com): DNS, hosting &amp; domains.</li>
+        <li>Manage Microsoft 365 Admin Center &amp; Azure — cloud identity, email &amp; infrastructure.</li>
+        <li>Produce Arabic legal content &amp; SEO articles; run social media &amp; Google Analytics.</li>
+        <li>Install &amp; maintain CCTV, switches, routers &amp; access points; handle IT procurement.</li>
+      </ul>
+    </div>
+    <div class="ch5-card">
+      <div class="ch5-head">
+        <div class="jic" style="background:linear-gradient(135deg,#16c8b0,#5fe3cf)">
+          <svg viewBox="0 0 64 64">
+            <g class="rot">
+              <circle cx="32" cy="32" r="14" fill="currentColor"/>
+              <g fill="currentColor"><rect x="28.5" y="8" width="7" height="11" rx="1.5"/><rect x="28.5" y="45" width="7" height="11" rx="1.5"/><rect x="8" y="28.5" width="11" height="7" rx="1.5"/><rect x="45" y="28.5" width="11" height="7" rx="1.5"/></g>
+              <g fill="currentColor" transform="rotate(45 32 32)"><rect x="28.5" y="8" width="7" height="11" rx="1.5"/><rect x="28.5" y="45" width="7" height="11" rx="1.5"/><rect x="8" y="28.5" width="11" height="7" rx="1.5"/><rect x="45" y="28.5" width="11" height="7" rx="1.5"/></g>
+              <circle cx="32" cy="32" r="6" fill="#171734"/>
+            </g>
+          </svg>
+        </div>
+        <div>
+          <h3>Aqaalem for Operation &amp; Maintenance</h3>
+          <div class="ch5-role">IT Specialist · Riyadh</div>
+        </div>
+      </div>
+      <ul>
+        <li>Provide on-site &amp; remote end-user support for hardware, software, printers &amp; connectivity; minimize downtime.</li>
+        <li>Build &amp; maintain <b>Ubuntu servers</b> and <b>Docker</b> containers for internal services.</li>
+        <li>Manage user &amp; access administration — accounts, permissions &amp; policies; endpoint readiness.</li>
+        <li>Administer email &amp; productivity services and day-to-day IT operations.</li>
+        <li>Support LAN connectivity — switching, DHCP/DNS &amp; troubleshooting.</li>
+        <li>Operate CCTV, access control / attendance &amp; IP telephony systems.</li>
+        <li>Administer website, hosting &amp; domains (GoDaddy); own IT procurement &amp; vendor coordination.</li>
+      </ul>
     </div>
   </div>
 </section>
@@ -531,7 +572,7 @@
   });
 
   /* بطاقات الوظيفتين تطلع بالتتابع */
-  gsap.utils.toArray('.job-card').forEach(el=>{
+  gsap.utils.toArray('.ch5-card').forEach(el=>{
     gsap.from(el,{y:50,scale:0.93,opacity:0,duration:0.8,ease:'back.out(1.4)',scrollTrigger:{trigger:el,start:'top 88%'}});
   });
 
