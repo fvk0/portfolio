@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Fakhredin Ibrahim — The Journey of an IT & Network Engineer</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Poppins:wght@400;500;600;700;800&family=Cairo:wght@600;800&display=swap" rel="stylesheet" />
+
+<style>
+  :root{
+    --ink:#171734; --cream:#fff8ee;
+    --indigo:#4b3bff; --amber:#ffc23a; --teal:#16c8b0; --pink:#ff5e8a;
+    --orange:#ff7a3c; --blue:#2aa7ff; --coral:#ff5e5b; --purple:#9b5bff;
+    --d:'Archivo Black', sans-serif; --b:'Poppins', sans-serif; --ar:'Cairo', sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{font-family:var(--b);color:var(--ink);background:var(--indigo);overflow-x:hidden;}
+  ::selection{background:var(--ink);color:var(--cream);}
+  a{color:inherit;}
+  .w{display:inline;} /* كلمات النص للأنميشن */
+
+  .progress{position:fixed;top:0;left:0;height:6px;width:100%;transform:scaleX(0);transform-origin:0 50%;background:var(--ink);z-index:90;}
+  .dots{position:fixed;right:22px;top:50%;transform:translateY(-50%);z-index:80;display:flex;flex-direction:column;gap:13px;}
+  .dots button{width:11px;height:11px;border-radius:50%;border:2px solid rgba(23,23,52,.55);background:transparent;cursor:pointer;padding:0;transition:transform .25s,background .25s;}
+  .dots button.on{background:var(--ink);transform:scale(1.4);}
+  @media(max-width:760px){.dots{display:none;}}
+
+  .loader{position:fixed;inset:0;z-index:100;background:var(--indigo);display:flex;align-items:center;justify-content:center;flex-direction:column;color:var(--cream);}
+  .loader .n{font-family:var(--d);font-size:clamp(60px,16vw,180px);line-height:1;}
+  .loader .t{font-weight:600;letter-spacing:4px;font-size:12px;margin-top:14px;opacity:.8;}
+
+  nav{position:fixed;top:0;left:0;right:0;z-index:70;display:flex;justify-content:space-between;align-items:center;padding:22px 6vw;color:var(--cream);}
+  nav .logo{font-family:var(--d);font-size:16px;}
+  nav .cta{font-weight:700;font-size:14px;text-decoration:none;border:2px solid currentColor;border-radius:100px;padding:9px 18px;transition:background .25s,color .25s;}
+  nav .cta:hover{background:var(--cream);color:var(--ink);}
+
+  .scene{position:relative;min-height:100vh;display:flex;align-items:center;padding:120px 6vw;overflow:hidden;}
+  .scene .inner{position:relative;z-index:3;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;width:100%;max-width:1200px;margin:0 auto;}
+  .scene.flip .text{order:2;}
+  @media(max-width:860px){.scene .inner{grid-template-columns:1fr;gap:30px;}.scene.flip .text{order:0;}.art{max-width:360px;margin:0 auto;}}
+
+  .chip{display:inline-block;font-family:var(--d);font-size:13px;letter-spacing:1px;background:var(--ink);color:var(--cream);padding:7px 14px;border-radius:100px;margin-bottom:22px;}
+  .scene h2{font-family:var(--d);font-size:clamp(30px,5vw,62px);line-height:1.02;margin-bottom:20px;}
+  .scene .yr{font-family:var(--d);font-size:clamp(13px,1.6vw,16px);opacity:.7;margin-bottom:10px;}
+  .scene p{font-size:clamp(15px,1.6vw,18px);line-height:1.7;max-width:46ch;font-weight:500;}
+  .scene p.ar{font-family:var(--ar);direction:rtl;margin-top:14px;font-weight:600;opacity:.9;}
+  .facts{display:flex;gap:26px;margin-top:26px;flex-wrap:wrap;}
+  .facts .f b{font-family:var(--d);font-size:clamp(22px,3vw,34px);display:block;}
+  .facts .f span{font-size:13px;font-weight:600;opacity:.75;}
+
+  .art{position:relative;z-index:3;}
+  .art svg{width:100%;height:auto;display:block;filter:drop-shadow(0 22px 40px rgba(23,23,52,.22));}
+
+  /* الأشكال الزخرفية (كلها class=shape) */
+  .shape{position:absolute;z-index:1;will-change:transform;}
+  .blob{border-radius:50%;}
+  .ring{border-radius:50%;border:3px solid var(--ink);opacity:.2;}
+  .tri{width:0;height:0;}
+  .sq{border-radius:10px;}
+  .x-mark{font-family:var(--d);}
+
+  .s-hero{background:var(--indigo);color:var(--cream);}
+  .s-edu{background:var(--amber);}
+  .s-hotel{background:var(--teal);}
+  .s-net{background:var(--pink);color:var(--cream);}
+  .s-riyadh{background:var(--orange);}
+  .s-it{background:var(--blue);color:var(--cream);}
+  .s-serv{background:var(--cream);}
+  .s-skills{background:var(--ink);color:var(--cream);}
+  .s-contact{background:var(--coral);color:var(--cream);}
+
+  .hero-wrap{position:relative;z-index:3;text-align:center;max-width:1000px;margin:0 auto;}
+  .hero-wrap .kick{font-weight:700;letter-spacing:4px;font-size:13px;opacity:.85;margin-bottom:24px;}
+  .hero-wrap h1{font-family:var(--d);font-size:clamp(44px,10vw,140px);line-height:.92;letter-spacing:-1px;}
+  .hero-wrap h1 .ln{display:block;overflow:hidden;}
+  .hero-wrap h1 em{font-style:normal;-webkit-text-stroke:2px var(--cream);color:transparent;}
+  .hero-wrap .role{margin-top:24px;font-weight:600;font-size:clamp(16px,2.2vw,22px);}
+  .hero-wrap .ar{font-family:var(--ar);direction:rtl;margin-top:10px;opacity:.85;font-weight:600;}
+  .scrollcue{margin-top:46px;font-weight:700;letter-spacing:2px;font-size:12px;display:inline-flex;flex-direction:column;align-items:center;gap:8px;}
+  .scrollcue .mouse{width:26px;height:42px;border:2px solid var(--cream);border-radius:14px;position:relative;}
+  .scrollcue .mouse::after{content:"";position:absolute;top:7px;left:50%;transform:translateX(-50%);width:4px;height:8px;border-radius:3px;background:var(--cream);animation:wheel 1.6s infinite;}
+  @keyframes wheel{0%{opacity:1;top:7px}70%{opacity:0;top:20px}100%{opacity:0}}
+
+  .marquee{overflow:hidden;white-space:nowrap;background:var(--ink);color:var(--cream);padding:22px 0;}
+  .marquee.alt{background:var(--purple);}
+  .marquee .track{display:inline-block;font-family:var(--d);font-size:clamp(26px,5vw,58px);will-change:transform;}
+  .marquee .track span{padding:0 24px;}
+  .marquee .track .o{color:transparent;-webkit-text-stroke:1.6px var(--cream);}
+
+  /* قسم الخدمات */
+  .s-serv{display:block;padding:130px 6vw;}
+  .serv-head{text-align:center;max-width:820px;margin:0 auto 60px;position:relative;z-index:3;}
+  .serv-head h2{font-family:var(--d);font-size:clamp(30px,5.5vw,64px);color:var(--ink);}
+  .serv-head p{margin-top:14px;color:#5b5876;font-weight:500;font-size:clamp(15px,1.7vw,18px);}
+  .serv-grid{position:relative;z-index:3;max-width:1180px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:22px;}
+  .card{background:#fff;border:2px solid var(--ink);border-radius:22px;padding:30px 26px;box-shadow:6px 6px 0 var(--ink);transition:transform .3s,box-shadow .3s;will-change:transform;}
+  .card:hover{transform:translate(-3px,-7px);box-shadow:11px 13px 0 var(--ink);}
+  .card .ic{width:80px;height:80px;border-radius:22px;display:flex;align-items:center;justify-content:center;margin-bottom:20px;color:var(--cream);position:relative;overflow:hidden;transition:transform .4s cubic-bezier(.3,1.4,.5,1);}
+  .card .ic::after{content:"";position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,.32),transparent 55%);}
+  .card:hover .ic{transform:rotate(-8deg) scale(1.12);}
+  .card .ic svg{width:46px;height:46px;position:relative;z-index:1;}
+  .card h3{font-family:var(--d);font-size:19px;margin-bottom:8px;color:var(--ink);}
+  .card p{font-size:14px;line-height:1.55;color:#5b5876;font-weight:500;max-width:none;}
+
+  .s-skills{padding:120px 6vw;}
+  .skills-head{text-align:center;max-width:760px;margin:0 auto 50px;position:relative;z-index:3;}
+  .skills-head h2{font-family:var(--d);font-size:clamp(28px,5vw,54px);}
+  .tagwrap{position:relative;z-index:3;max-width:1000px;margin:0 auto;display:flex;flex-wrap:wrap;gap:12px;justify-content:center;}
+  .tagwrap span{font-weight:700;font-size:14px;border:2px solid rgba(255,248,238,.3);border-radius:100px;padding:10px 18px;transition:transform .25s,background .25s,color .25s,border-color .25s;cursor:default;}
+  .tagwrap span:hover{background:var(--amber);color:var(--ink);transform:translateY(-4px) rotate(-2deg);border-color:var(--amber);}
+
+  .contact-wrap{position:relative;z-index:3;text-align:center;max-width:900px;margin:0 auto;}
+  .contact-wrap h2{font-family:var(--d);font-size:clamp(40px,9vw,120px);line-height:.95;}
+  .contact-wrap .mail{display:inline-block;margin-top:30px;font-family:var(--d);font-size:clamp(20px,4vw,44px);text-decoration:none;border-bottom:4px solid var(--cream);}
+  .contact-wrap .links{display:flex;gap:18px;justify-content:center;flex-wrap:wrap;margin-top:40px;}
+  .contact-wrap .links a{text-decoration:none;font-weight:700;border:2px solid var(--cream);border-radius:100px;padding:12px 22px;transition:background .25s,color .25s;}
+  .contact-wrap .links a:hover{background:var(--cream);color:var(--ink);}
+  footer{padding:30px 6vw;text-align:center;font-size:12px;font-weight:600;opacity:.85;background:var(--ink);color:var(--cream);}
+
+  /* قسم "الآن" — وظيفتين متزامنتين */
+  .s-it.now{display:block;padding:130px 6vw;}
+  .now-wrap{position:relative;z-index:3;max-width:1180px;margin:0 auto;}
+  .now-head{max-width:840px;margin:0 auto 50px;text-align:center;}
+  .now-head .now-intro{margin:16px auto 0;color:rgba(255,248,238,.92);}
+  .now-head .ar{margin:10px auto 0;color:rgba(255,248,238,.8);}
+  .jobs{display:grid;grid-template-columns:1fr 1fr;gap:24px;}
+  @media(max-width:860px){.jobs{grid-template-columns:1fr;}}
+  .job-card{background:#fff;color:var(--ink);border:2px solid var(--ink);border-radius:22px;box-shadow:6px 6px 0 var(--ink);padding:30px 28px;will-change:transform;}
+  .job-head{display:flex;align-items:center;gap:14px;margin-bottom:18px;}
+  .job-head .jic{width:56px;height:56px;border-radius:15px;display:flex;align-items:center;justify-content:center;color:var(--cream);flex:none;position:relative;overflow:hidden;}
+  .job-head .jic::after{content:"";position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,.3),transparent 55%);}
+  .job-head .jic svg{width:32px;height:32px;position:relative;z-index:1;}
+  .job-head h3{font-family:var(--d);font-size:17px;line-height:1.12;color:var(--ink);}
+  .job-head .period{font-size:12px;font-weight:700;color:#7a7790;margin-top:4px;}
+  .job-card ul{list-style:none;display:flex;flex-direction:column;gap:11px;}
+  .job-card li{font-size:14px;line-height:1.55;color:#3c3a55;font-weight:500;padding-left:22px;position:relative;}
+  .job-card li::before{content:"▹";position:absolute;left:0;top:0;color:var(--blue);font-weight:800;}
+
+  /* أنميشن داخل الـ SVG */
+  .pulse{transform-box:fill-box;transform-origin:center;animation:pulse 2s ease-in-out infinite;}
+  .pulse.d1{animation-delay:.3s}.pulse.d2{animation-delay:.6s}
+  @keyframes pulse{0%,100%{opacity:.5;transform:scale(.9)}50%{opacity:1;transform:scale(1.06)}}
+  .blink{animation:blink 1.4s steps(1) infinite;}
+  .blink.d1{animation-delay:.4s}.blink.d2{animation-delay:.8s}
+  @keyframes blink{0%,49%{opacity:1}50%,100%{opacity:.25}}
+  .bob{transform-box:fill-box;transform-origin:center;animation:bob 2.6s ease-in-out infinite;}
+  @keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-3px)}}
+  .rot{transform-box:fill-box;transform-origin:center;animation:rot 9s linear infinite;}
+  @keyframes rot{to{transform:rotate(360deg)}}
+  .sweep{transform-box:view-box;transform-origin:32px 46px;animation:sweep 2.6s ease-in-out infinite;}
+  @keyframes sweep{0%,100%{transform:rotate(-34deg)}50%{transform:rotate(40deg)}}
+</style>
+</head>
+<body>
+
+<div class="progress" id="progress"></div>
+<div class="dots" id="dots"></div>
+
+<div class="loader" id="loader">
+  <div class="n" id="count">0</div>
+  <div class="t">LOADING THE JOURNEY</div>
+</div>
+
+<nav>
+  <div class="logo">FAKHREDIN.</div>
+  <a class="cta" href="#contact">Get in touch</a>
+</nav>
+
+<!-- ===== HERO ===== -->
+<section class="scene s-hero" data-scene="Start" data-color="#4b3bff">
+  <div class="shape blob" style="width:240px;height:240px;background:var(--pink);top:8%;left:6%" data-speed="3"></div>
+  <div class="shape blob" style="width:150px;height:150px;background:var(--amber);bottom:12%;right:10%" data-speed="-3.5"></div>
+  <div class="shape ring" style="width:300px;height:300px;border-color:var(--cream);top:20%;right:16%" data-speed="2"></div>
+  <div class="shape tri" style="border-left:34px solid transparent;border-right:34px solid transparent;border-bottom:60px solid var(--teal);bottom:22%;left:16%" data-speed="-2.6"></div>
+  <div class="shape sq" style="width:70px;height:70px;background:var(--coral);top:16%;right:30%" data-speed="2.4"></div>
+  <div class="shape x-mark" style="font-size:60px;color:var(--amber);bottom:14%;left:40%" data-speed="-2">✕</div>
+
+  <div class="hero-wrap">
+    <div class="kick reveal">PORTFOLIO · RIYADH, SAUDI ARABIA · 2026</div>
+    <h1><span class="ln"><span class="hl">FAKHREDIN</span></span><span class="ln"><em class="hl">IBRAHIM</em></span></h1>
+    <div class="role reveal">IT Specialist &amp; Network Engineer</div>
+    <div class="ar reveal">رحلة مهندس شبكات وأنظمة — مشوار من السودان إلى الرياض</div>
+    <div class="scrollcue reveal"><span class="mouse"></span>SCROLL TO BEGIN</div>
+  </div>
+</section>
+
+<div class="marquee" data-color="#171734"><div class="track">
+  <span>NETWORKS</span><span class="o">SYSTEMS</span><span>CLOUD</span><span class="o">SECURITY</span><span>SUPPORT</span><span class="o">SERVERS</span>
+  <span>NETWORKS</span><span class="o">SYSTEMS</span><span>CLOUD</span><span class="o">SECURITY</span><span>SUPPORT</span><span class="o">SERVERS</span>
+</div></div>
+
+<!-- ===== CH 01 ===== -->
+<section class="scene s-edu" data-scene="Foundation" data-color="#ffc23a">
+  <div class="shape ring" style="width:260px;height:260px;top:-60px;right:-60px" data-speed="2.4"></div>
+  <div class="shape blob" style="width:120px;height:120px;background:var(--coral);bottom:10%;left:5%" data-speed="-3"></div>
+  <div class="shape sq" style="width:54px;height:54px;background:var(--indigo);top:18%;left:12%" data-speed="2.6"></div>
+  <div class="shape x-mark" style="font-size:46px;color:var(--ink);top:24%;right:22%" data-speed="-2.2">✦</div>
+  <div class="inner">
+    <div class="text">
+      <span class="chip reveal">CHAPTER 01</span>
+      <div class="yr reveal">2016 — 2023 · SUDAN</div>
+      <h2 class="split">The Foundation</h2>
+      <p class="split">A B.Sc. in <b>Electronics Engineering — Networks &amp; Communications</b> from Sudan University of Science and Technology. Where curiosity about how systems talk to each other became a career.</p>
+      <p class="ar split">بكالوريوس هندسة إلكترونيات — شبكات واتصالات. هنا بدأت رحلتي مع الأنظمة والشبكات.</p>
+    </div>
+    <div class="art pop" data-speed="1.8">
+      <svg viewBox="0 0 400 320" xmlns="http://www.w3.org/2000/svg">
+        <rect x="40" y="120" width="320" height="160" rx="14" fill="#171734"/>
+        <rect x="60" y="150" width="60" height="110" rx="6" fill="#ffc23a"/>
+        <rect x="170" y="150" width="60" height="110" rx="6" fill="#ff5e8a"/>
+        <rect x="280" y="150" width="60" height="110" rx="6" fill="#16c8b0"/>
+        <polygon points="200,40 360,95 200,150 40,95" fill="#171734"/>
+        <rect x="190" y="120" width="20" height="40" fill="#171734"/>
+        <circle cx="200" cy="160" r="10" fill="#ff5e5b" class="pulse"/>
+        <line x1="200" y1="150" x2="320" y2="118" stroke="#ffc23a" stroke-width="4"/>
+        <circle cx="324" cy="116" r="9" fill="#16c8b0" class="pulse d1"/>
+        <g stroke="#fff8ee" stroke-width="3"><line x1="76" y1="180" x2="104" y2="180"/><line x1="76" y1="200" x2="104" y2="200"/><line x1="186" y1="180" x2="214" y2="180"/><line x1="186" y1="200" x2="214" y2="200"/></g>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CH 02 ===== -->
+<section class="scene s-hotel flip" data-scene="First Systems" data-color="#16c8b0">
+  <div class="shape blob" style="width:200px;height:200px;background:var(--indigo);top:14%;right:8%" data-speed="3"></div>
+  <div class="shape tri" style="border-left:40px solid transparent;border-right:40px solid transparent;border-bottom:70px solid var(--amber);bottom:14%;left:10%" data-speed="-2.8"></div>
+  <div class="shape ring" style="width:180px;height:180px;bottom:-40px;right:20%" data-speed="2"></div>
+  <div class="inner">
+    <div class="text">
+      <span class="chip reveal">CHAPTER 02</span>
+      <div class="yr reveal">2021 — 2022 · CANS HOTEL</div>
+      <h2 class="split">First Systems</h2>
+      <p class="split">As <b>System Administrator</b>, I ran every workstation, server and access point in the building — and rebuilt the Wi-Fi from the ground up.</p>
+      <p class="ar split">أول دور لي كمسؤول أنظمة: شبكات، خوادم، نقاط وصول، ونسخ احتياطي.</p>
+      <div class="facts">
+        <div class="f reveal"><b>100%</b><span>Wi-Fi coverage</span></div>
+        <div class="f reveal"><b>24/7</b><span>uptime focus</span></div>
+      </div>
+    </div>
+    <div class="art pop" data-speed="1.8">
+      <svg viewBox="0 0 400 320" xmlns="http://www.w3.org/2000/svg">
+        <rect x="120" y="70" width="160" height="220" rx="10" fill="#171734"/>
+        <g fill="#16c8b0"><rect x="140" y="95" width="26" height="26" rx="4"/><rect x="187" y="95" width="26" height="26" rx="4"/><rect x="234" y="95" width="26" height="26" rx="4"/><rect x="140" y="140" width="26" height="26" rx="4"/><rect x="187" y="140" width="26" height="26" rx="4"/><rect x="234" y="140" width="26" height="26" rx="4"/><rect x="140" y="185" width="26" height="26" rx="4"/><rect x="187" y="185" width="26" height="26" rx="4"/><rect x="234" y="185" width="26" height="26" rx="4"/></g>
+        <rect x="180" y="235" width="40" height="55" rx="4" fill="#ffc23a"/>
+        <g fill="none" stroke="#fff8ee" stroke-width="6" stroke-linecap="round">
+          <path d="M170 60 q30 -30 60 0" class="pulse"/>
+          <path d="M155 48 q45 -45 90 0" class="pulse d1"/>
+          <path d="M140 36 q60 -60 120 0" class="pulse d2"/>
+        </g>
+        <circle cx="200" cy="66" r="6" fill="#ff5e5b"/>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CH 03 ===== -->
+<section class="scene s-net" data-scene="Networks" data-color="#ff5e8a">
+  <div class="shape ring" style="width:240px;height:240px;border-color:var(--cream);bottom:-50px;left:-40px" data-speed="2"></div>
+  <div class="shape blob" style="width:130px;height:130px;background:var(--amber);top:12%;right:12%" data-speed="-3.2"></div>
+  <div class="shape sq" style="width:60px;height:60px;background:var(--teal);bottom:18%;right:18%" data-speed="2.6"></div>
+  <div class="inner">
+    <div class="text">
+      <span class="chip reveal">CHAPTER 03</span>
+      <div class="yr reveal">2022 — 2023 · AZ TECHNOLOGY</div>
+      <h2 class="split">Building Networks</h2>
+      <p class="split">A <b>Network Engineer</b> in the field: switches, routers, access points and CCTV. Full installs — cabling, termination, labeling — tested with Fluke and tuned for speed.</p>
+      <p class="ar split">مهندس شبكات ميداني: تركيب وضبط السويتشات والراوترات والكاميرات واختبار الأداء.</p>
+    </div>
+    <div class="art pop" data-speed="1.8">
+      <svg viewBox="0 0 400 320" xmlns="http://www.w3.org/2000/svg">
+        <rect x="60" y="150" width="280" height="60" rx="12" fill="#171734"/>
+        <g fill="#ffc23a"><rect x="80" y="172" width="18" height="16" rx="3"/><rect x="108" y="172" width="18" height="16" rx="3"/><rect x="136" y="172" width="18" height="16" rx="3"/><rect x="164" y="172" width="18" height="16" rx="3"/><rect x="192" y="172" width="18" height="16" rx="3"/><rect x="220" y="172" width="18" height="16" rx="3"/></g>
+        <circle cx="300" cy="180" r="9" fill="#16c8b0" class="blink"/><circle cx="322" cy="180" r="9" fill="#ff5e5b" class="blink d1"/>
+        <g fill="none" stroke="#171734" stroke-width="6" stroke-linecap="round"><path d="M100 172 C 100 90, 200 90, 200 60"/><path d="M150 172 C 150 110, 300 110, 300 70"/><path d="M250 210 C 250 270, 120 260, 120 290"/></g>
+        <circle cx="200" cy="56" r="14" fill="#16c8b0" stroke="#171734" stroke-width="5" class="pulse"/>
+        <circle cx="300" cy="66" r="14" fill="#ffc23a" stroke="#171734" stroke-width="5" class="pulse d1"/>
+        <rect x="100" y="288" width="44" height="26" rx="6" fill="#171734"/><circle cx="122" cy="301" r="6" fill="#ff5e8a" class="blink d2"/>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CH 04 ===== -->
+<section class="scene s-riyadh flip" data-scene="To Riyadh" data-color="#ff7a3c">
+  <div class="shape blob" style="width:120px;height:120px;background:var(--cream);top:16%;left:10%" data-speed="2.8"></div>
+  <div class="shape ring" style="width:280px;height:280px;top:-70px;right:-70px" data-speed="2.2"></div>
+  <div class="shape x-mark" style="font-size:54px;color:var(--ink);bottom:18%;right:24%" data-speed="-2.4">✦</div>
+  <div class="inner">
+    <div class="text">
+      <span class="chip reveal">CHAPTER 04</span>
+      <div class="yr reveal">2025 · A NEW CITY</div>
+      <h2 class="split">To Riyadh</h2>
+      <p class="split">A move to Saudi Arabia — new scale, new systems, new standards. Bigger infrastructure, higher stakes, sharper documentation.</p>
+      <p class="ar split">الانتقال إلى الرياض: بنية تحتية أكبر ومعايير أعلى وتحديات جديدة.</p>
+    </div>
+    <div class="art pop" data-speed="1.8">
+      <svg viewBox="0 0 400 320" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="320" cy="80" r="42" fill="#ffc23a" class="pulse"/>
+        <rect x="40" y="160" width="50" height="120" fill="#171734"/>
+        <rect x="100" y="120" width="60" height="160" fill="#171734"/>
+        <path d="M180 280 L180 110 Q180 60 210 60 L235 60 Q265 60 265 110 L265 280 Z" fill="#171734"/>
+        <path d="M188 95 Q222 135 257 95 L257 70 Q222 110 188 70 Z" fill="#ff7a3c"/>
+        <rect x="278" y="150" width="54" height="130" fill="#171734"/>
+        <rect x="342" y="190" width="40" height="90" fill="#171734"/>
+        <g fill="#ffc23a"><rect x="112" y="140" width="10" height="10"/><rect x="132" y="140" width="10" height="10"/><rect x="112" y="170" width="10" height="10"/><rect x="132" y="170" width="10" height="10"/><rect x="292" y="170" width="10" height="10"/><rect x="312" y="170" width="10" height="10"/></g>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CH 05 — NOW (وظيفتين متزامنتين) ===== -->
+<section class="scene s-it now" data-scene="IT Specialist" data-color="#2aa7ff">
+  <div class="shape blob" style="width:200px;height:200px;background:var(--pink);bottom:6%;left:4%;opacity:.85" data-speed="3"></div>
+  <div class="shape tri" style="border-left:36px solid transparent;border-right:36px solid transparent;border-bottom:64px solid var(--amber);top:9%;right:7%" data-speed="-2.6"></div>
+  <div class="shape sq" style="width:50px;height:50px;background:var(--coral);top:16%;left:9%" data-speed="2.4"></div>
+  <div class="now-wrap">
+    <div class="now-head">
+      <span class="chip reveal">CHAPTER 05</span>
+      <h2 class="split">In Riyadh</h2>
+      <p class="now-intro split">As an IT Specialist in Riyadh, I build, secure and automate IT — from Linux &amp; Docker servers and cloud to ERP systems, networks and security.</p>
+      <p class="ar split">أخصائي تقنية معلومات في الرياض — خوادم وسحابة وأنظمة ERP وشبكات وأمن معلومات.</p>
+    </div>
+    <div class="jobs">
+      <div class="job-card">
+        <div class="job-head">
+          <div class="jic" style="background:linear-gradient(135deg,#4b3bff,#8b7bff)">
+            <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round">
+              <circle cx="32" cy="13" r="2.5" fill="currentColor" stroke="none"/>
+              <line x1="32" y1="15" x2="32" y2="48"/><line x1="14" y1="22" x2="50" y2="22"/><line x1="24" y1="50" x2="40" y2="50"/>
+              <line x1="14" y1="22" x2="14" y2="30"/><line x1="50" y1="22" x2="50" y2="30"/>
+              <path d="M6 30 a8 7 0 0 0 16 0" fill="currentColor" stroke="none"/>
+              <path d="M42 30 a8 7 0 0 0 16 0" fill="currentColor" stroke="none"/>
+            </svg>
+          </div>
+          <div>
+            <h3>Fahad Alabdulqader Law Firm</h3>
+            <div class="period">IT Specialist · Riyadh</div>
+          </div>
+        </div>
+        <ul>
+          <li>Manage all IT infrastructure: workstations, printers, network gear, CCTV &amp; peripherals.</li>
+          <li>Lead end-to-end <b>Odoo ERP</b> implementation — legal case management, contract tracking &amp; client workflows.</li>
+          <li>Build custom Odoo modules with VS Code, Claude Code &amp; Cowork (AI-assisted automation).</li>
+          <li>Administer the firm's website (faafirm.com): DNS, hosting &amp; domains.</li>
+          <li>Manage Microsoft 365 Admin Center &amp; Azure — cloud identity, email &amp; infrastructure.</li>
+          <li>Produce Arabic legal content &amp; SEO articles; run social media &amp; Google Analytics.</li>
+          <li>Install &amp; maintain CCTV, switches, routers &amp; access points; handle IT procurement.</li>
+        </ul>
+      </div>
+      <div class="job-card">
+        <div class="job-head">
+          <div class="jic" style="background:linear-gradient(135deg,#16c8b0,#5fe3cf)">
+            <svg viewBox="0 0 64 64">
+              <g class="rot">
+                <circle cx="32" cy="32" r="14" fill="currentColor"/>
+                <g fill="currentColor"><rect x="28.5" y="8" width="7" height="11" rx="1.5"/><rect x="28.5" y="45" width="7" height="11" rx="1.5"/><rect x="8" y="28.5" width="11" height="7" rx="1.5"/><rect x="45" y="28.5" width="11" height="7" rx="1.5"/></g>
+                <g fill="currentColor" transform="rotate(45 32 32)"><rect x="28.5" y="8" width="7" height="11" rx="1.5"/><rect x="28.5" y="45" width="7" height="11" rx="1.5"/><rect x="8" y="28.5" width="11" height="7" rx="1.5"/><rect x="45" y="28.5" width="11" height="7" rx="1.5"/></g>
+                <circle cx="32" cy="32" r="6" fill="#171734"/>
+              </g>
+            </svg>
+          </div>
+          <div>
+            <h3>Aqaalem for Operation &amp; Maintenance</h3>
+            <div class="period">IT Specialist · Riyadh</div>
+          </div>
+        </div>
+        <ul>
+          <li>Provide on-site &amp; remote end-user support for hardware, software, printers &amp; connectivity; minimize downtime.</li>
+          <li>Build &amp; maintain <b>Ubuntu servers</b> and <b>Docker</b> containers for internal services.</li>
+          <li>Manage user &amp; access administration — accounts, permissions &amp; policies; endpoint readiness.</li>
+          <li>Administer email &amp; productivity services and day-to-day IT operations.</li>
+          <li>Support LAN connectivity — switching, DHCP/DNS &amp; troubleshooting.</li>
+          <li>Operate CCTV, access control / attendance &amp; IP telephony systems.</li>
+          <li>Administer website, hosting &amp; domains (GoDaddy); own IT procurement &amp; vendor coordination.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="marquee alt" data-color="#9b5bff"><div class="track">
+  <span class="o">WORDPRESS</span><span>cPANEL</span><span class="o">DOMAINS</span><span>SYNOLOGY NAS</span><span class="o">HOSTING</span><span>CCTV</span>
+  <span class="o">WORDPRESS</span><span>cPANEL</span><span class="o">DOMAINS</span><span>SYNOLOGY NAS</span><span class="o">HOSTING</span><span>CCTV</span>
+</div></div>
+
+<!-- ===== SERVICES ===== -->
+<section class="scene s-serv" data-scene="Services" data-color="#fff8ee">
+  <div class="shape blob" style="width:140px;height:140px;background:var(--amber);top:6%;right:6%;opacity:.55" data-speed="2.4"></div>
+  <div class="shape ring" style="width:200px;height:200px;bottom:4%;left:2%;opacity:.14" data-speed="2"></div>
+  <div class="serv-head">
+    <span class="chip reveal">WHAT I DO</span>
+    <h2 class="split">Services &amp; Expertise</h2>
+    <p class="split">From the cable to the cloud — everything that keeps an organization's IT running.</p>
+  </div>
+  <div class="serv-grid">
+    <div class="card"><div class="ic" style="background:linear-gradient(135deg,#4b3bff,#8b7bff)"><svg viewBox="0 0 64 64" fill="currentColor"><rect x="8" y="26" width="48" height="16" rx="4"/><g fill="#171734"><rect x="13" y="31" width="6" height="6" rx="1"/><rect x="22" y="31" width="6" height="6" rx="1"/><rect x="31" y="31" width="6" height="6" rx="1"/></g><circle cx="44" cy="34" r="3" fill="#16c8b0" class="blink"/><circle cx="51" cy="34" r="3" fill="#ffc23a" class="blink d1"/></svg></div><h3>Networking</h3><p>Routing, switching, LAN/WAN, Wi-Fi, DHCP/DNS and Fluke testing.</p></div>
+
+    <div class="card"><div class="ic" style="background:linear-gradient(135deg,#ff5e8a,#ff9ab8)"><svg viewBox="0 0 64 64" fill="currentColor"><rect x="14" y="12" width="36" height="12" rx="3"/><rect x="14" y="28" width="36" height="12" rx="3"/><rect x="14" y="44" width="36" height="12" rx="3"/><g fill="#171734"><circle cx="21" cy="18" r="2.4" class="blink"/><circle cx="21" cy="34" r="2.4" class="blink d1"/><circle cx="21" cy="50" r="2.4" class="blink d2"/></g></svg></div><h3>Systems &amp; Servers</h3><p>Windows Server, Red Hat &amp; Ubuntu, Docker, backups and hardening.</p></div>
+
+    <div class="card"><div class="ic" style="background:linear-gradient(135deg,#2aa7ff,#7cc8ff)"><svg viewBox="0 0 64 64" fill="currentColor"><path class="bob" d="M20 46 a12 12 0 0 1 1 -24 a14 14 0 0 1 27 4 a10 10 0 0 1 -4 20 Z"/></svg></div><h3>Cloud</h3><p>Microsoft 365 Admin, Azure identity, email and infrastructure.</p></div>
+
+    <div class="card"><div class="ic" style="background:linear-gradient(135deg,#16c8b0,#5fe3cf)"><svg viewBox="0 0 64 64" fill="currentColor"><rect x="20" y="10" width="24" height="44" rx="5"/><rect x="25" y="16" width="14" height="9" rx="2" fill="#171734"/><rect x="25" y="29" width="14" height="9" rx="2" fill="#171734"/><circle cx="28" cy="47" r="2.4" fill="#16c8b0" class="blink"/><circle cx="35" cy="47" r="2.4" fill="#ffc23a" class="blink d1"/></svg></div><h3>Synology NAS</h3><p>Storage, shared drives, backups and on-prem services.</p></div>
+
+    <div class="card"><div class="ic" style="background:linear-gradient(135deg,#ff5e5b,#ff918f)"><svg viewBox="0 0 64 64" fill="currentColor"><rect x="8" y="14" width="48" height="36" rx="5"/><rect x="8" y="14" width="48" height="9" rx="5" fill="#171734"/><circle cx="14" cy="18.5" r="1.6" fill="#fff8ee"/><circle cx="20" cy="18.5" r="1.6" fill="#fff8ee"/><text x="32" y="44" text-anchor="middle" font-family="Archivo Black,sans-serif" font-size="18" fill="#171734" class="pulse">W</text></svg></div><h3>Websites &amp; WordPress</h3><p>Building, managing &amp; maintaining sites, content and SEO basics.</p></div>
+
+    <div class="card"><div class="ic" style="background:linear-gradient(135deg,#9b5bff,#c4a3ff)"><svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round"><path d="M14 46 a18 18 0 0 1 36 0"/><line class="sweep" x1="32" y1="46" x2="43" y2="30"/><circle cx="32" cy="46" r="3.5" fill="currentColor"/></svg></div><h3>cPanel &amp; Hosting</h3><p>Hosting setup, email accounts, performance and site management.</p></div>
+
+    <div class="card"><div class="ic" style="background:linear-gradient(135deg,#ffc23a,#ffd877)"><svg viewBox="0 0 64 64" fill="none" stroke="#171734" stroke-width="4"><circle cx="32" cy="32" r="20"/><ellipse class="rot" cx="32" cy="32" rx="9" ry="20"/><line x1="12" y1="32" x2="52" y2="32"/></svg></div><h3>Domains &amp; DNS</h3><p>Domain registration, DNS records, GoDaddy &amp; provider management.</p></div>
+
+    <div class="card"><div class="ic" style="background:linear-gradient(135deg,#4b3bff,#8b7bff)"><svg viewBox="0 0 64 64" fill="currentColor"><g transform="rotate(-12 30 30)"><rect x="12" y="24" width="30" height="15" rx="4"/><circle cx="19" cy="31.5" r="3.5" fill="#fff8ee"/></g><line x1="42" y1="26" x2="52" y2="21" stroke="currentColor" stroke-width="4" stroke-linecap="round"/><line x1="32" y1="42" x2="32" y2="54" stroke="currentColor" stroke-width="4"/><circle cx="40" cy="22" r="2.6" fill="#ff5e5b" class="blink"/></svg></div><h3>CCTV &amp; Security</h3><p>IP cameras, access control, attendance and IP telephony.</p></div>
+
+    <div class="card"><div class="ic" style="background:linear-gradient(135deg,#16c8b0,#5fe3cf)"><svg viewBox="0 0 64 64" fill="currentColor"><rect x="12" y="12" width="17" height="17" rx="3"/><rect x="35" y="12" width="17" height="17" rx="3"/><rect x="12" y="35" width="17" height="17" rx="3"/><rect x="35" y="35" width="17" height="17" rx="3" fill="#171734" class="pulse"/></svg></div><h3>Odoo ERP</h3><p>Implementation &amp; custom modules for cases, contracts &amp; workflows.</p></div>
+
+    <div class="card"><div class="ic" style="background:linear-gradient(135deg,#ff5e8a,#ff9ab8)"><svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round"><path d="M16 36 v-4 a16 16 0 0 1 32 0 v4"/><rect x="11" y="34" width="9" height="16" rx="4" fill="currentColor" stroke="none"/><rect x="44" y="34" width="9" height="16" rx="4" fill="currentColor" stroke="none"/><path d="M48 50 a10 8 0 0 1 -13 6"/></svg></div><h3>IT Support</h3><p>On-site &amp; remote support, procurement and end-user readiness.</p></div>
+  </div>
+</section>
+
+<!-- ===== SKILLS TAGS ===== -->
+<section class="scene s-skills" data-scene="Toolkit" data-color="#171734">
+  <div class="shape blob" style="width:160px;height:160px;background:var(--indigo);top:10%;right:8%;opacity:.45" data-speed="2.4"></div>
+  <div class="shape ring" style="width:220px;height:220px;border-color:var(--cream);bottom:4%;left:3%;opacity:.14" data-speed="2"></div>
+  <div class="skills-head"><span class="chip reveal">THE TOOLKIT</span><h2 class="split">Tools &amp; technologies</h2></div>
+  <div class="tagwrap">
+    <span class="reveal">CCNA 200-301</span><span class="reveal">Routing &amp; Switching</span><span class="reveal">LAN / WAN</span><span class="reveal">DHCP / DNS</span><span class="reveal">Wi-Fi &amp; APs</span><span class="reveal">Fluke Testing</span>
+    <span class="reveal">Windows Server / MCSA</span><span class="reveal">Red Hat &amp; Ubuntu</span><span class="reveal">Docker</span><span class="reveal">Microsoft 365</span><span class="reveal">Azure</span><span class="reveal">Synology NAS</span>
+    <span class="reveal">WordPress</span><span class="reveal">cPanel</span><span class="reveal">Domains &amp; DNS</span><span class="reveal">Hosting</span><span class="reveal">Website Management</span><span class="reveal">Google Analytics</span>
+    <span class="reveal">Odoo ERP</span><span class="reveal">CCTV / IP Cameras</span><span class="reveal">Access Control</span><span class="reveal">IP Telephony</span><span class="reveal">Kali Linux</span><span class="reveal">VS Code</span>
+  </div>
+</section>
+
+<!-- ===== CONTACT ===== -->
+<section class="scene s-contact" id="contact" data-scene="Contact" data-color="#ff5e5b">
+  <div class="shape ring" style="width:300px;height:300px;border-color:var(--cream);top:-80px;left:-60px" data-speed="2"></div>
+  <div class="shape blob" style="width:140px;height:140px;background:var(--amber);bottom:14%;right:10%" data-speed="-2.8"></div>
+  <div class="shape tri" style="border-left:30px solid transparent;border-right:30px solid transparent;border-bottom:52px solid var(--ink);top:18%;right:18%;opacity:.5" data-speed="2.4"></div>
+  <div class="contact-wrap">
+    <span class="chip reveal">THE NEXT CHAPTER</span>
+    <h2 class="split">Let's build something solid.</h2>
+    <a class="mail reveal" href="mailto:fakri1998@gmail.com">fakri1998@gmail.com</a>
+    <div class="links">
+      <a class="reveal" href="tel:+966500518310">+966 50 051 8310</a>
+      <a class="reveal" href="https://linkedin.com/in/fvk-eng" target="_blank" rel="noopener">LinkedIn ↗</a>
+      <a class="reveal" href="#">Riyadh, KSA</a>
+    </div>
+  </div>
+</section>
+
+<footer>© 2026 Fakhredin Ibrahim — IT &amp; Network Engineer · Riyadh, Saudi Arabia</footer>
+
+<script>
+  window.addEventListener('load',()=>setTimeout(()=>{
+    const l=document.getElementById('loader');
+    if(l){l.style.transition='opacity .5s';l.style.opacity='0';setTimeout(()=>l.style.display='none',500);}
+  },2600));
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.20/dist/lenis.min.js"></script>
+
+<script>
+(function(){
+  if(typeof gsap==='undefined'){return;}
+  gsap.registerPlugin(ScrollTrigger);
+
+  /* سكرول ناعم */
+  if(typeof Lenis!=='undefined'){
+    const lenis=new Lenis({lerp:0.09});
+    window.__lenis=lenis;
+    lenis.on('scroll',ScrollTrigger.update);
+    gsap.ticker.add((t)=>lenis.raf(t*1000));
+    gsap.ticker.lagSmoothing(0);
+    document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',e=>{const el=document.querySelector(a.getAttribute('href'));if(el){e.preventDefault();lenis.scrollTo(el);}});});
+  }
+
+  /* تقسيم النص لكلمات (يحافظ على <b> و <br>) */
+  function splitWords(el){
+    const words=[];
+    (function walk(node){
+      [...node.childNodes].forEach(n=>{
+        if(n.nodeType===3){
+          const parts=n.textContent.split(/(\s+)/), frag=document.createDocumentFragment();
+          parts.forEach(p=>{ if(p==='')return;
+            if(/^\s+$/.test(p)){frag.appendChild(document.createTextNode(p));}
+            else{const s=document.createElement('span');s.className='w';s.textContent=p;frag.appendChild(s);words.push(s);} });
+          n.replaceWith(frag);
+        } else if(n.nodeType===1 && n.tagName!=='BR'){ walk(n); }
+      });
+    })(el);
+    return words;
+  }
+
+  /* ===== شاشة التحميل + ظهور الهيرو والأشكال ===== */
+  const c={v:0};
+  const heroShapes=gsap.utils.toArray('.s-hero .shape');
+  gsap.set(heroShapes,{scale:0,autoAlpha:0});
+  gsap.set('.s-hero h1 .hl',{yPercent:120});
+  gsap.timeline()
+    .to(c,{v:100,duration:1.6,ease:'power2.inOut',onUpdate:()=>document.getElementById('count').textContent=Math.round(c.v)})
+    .to('#loader',{yPercent:-100,duration:0.9,ease:'power4.inOut'},'+=0.1')
+    .to('.s-hero h1 .hl',{yPercent:0,duration:1,stagger:0.12,ease:'power4.out'},'-=0.45')
+    .from('.s-hero .reveal',{y:40,opacity:0,duration:0.8,stagger:0.1,ease:'power3.out'},'-=0.7')
+    .to(heroShapes,{scale:1,autoAlpha:1,duration:0.8,stagger:0.07,ease:'back.out(1.7)'},'-=0.7');
+
+  /* ===== النص يظهر كلمة كلمة مع السكرول ===== */
+  gsap.utils.toArray('.split').forEach(el=>{
+    const words=splitWords(el);
+    if(!words.length)return;
+    gsap.fromTo(words,{opacity:0.1},{opacity:1,stagger:0.05,ease:'none',
+      scrollTrigger:{trigger:el,start:'top 88%',end:'top 45%',scrub:true}});
+  });
+
+  /* ظهور بسيط للعناصر الصغيرة (شيبس/سنين/حقائق/روابط) */
+  gsap.utils.toArray('.reveal').forEach(el=>{
+    if(el.closest('.s-hero'))return;
+    gsap.from(el,{y:40,opacity:0,duration:0.8,ease:'power3.out',scrollTrigger:{trigger:el,start:'top 90%'}});
+  });
+
+  /* الرسومات تطلع بنطّة */
+  gsap.utils.toArray('.pop').forEach(el=>{
+    gsap.from(el,{scale:0.55,rotate:-10,opacity:0,duration:1,ease:'back.out(1.6)',scrollTrigger:{trigger:el,start:'top 82%'}});
+  });
+
+  /* بطاقات الخدمات تطلع بنطّة بالتتابع */
+  gsap.utils.toArray('.serv-grid .card').forEach(el=>{
+    gsap.from(el,{y:60,scale:0.85,opacity:0,duration:0.7,ease:'back.out(1.5)',scrollTrigger:{trigger:el,start:'top 92%'}});
+  });
+
+  /* بطاقات الوظيفتين تطلع بالتتابع */
+  gsap.utils.toArray('.job-card').forEach(el=>{
+    gsap.from(el,{y:50,scale:0.93,opacity:0,duration:0.8,ease:'back.out(1.4)',scrollTrigger:{trigger:el,start:'top 88%'}});
+  });
+
+  /* ===== الأشكال: مخفية وتظهر مع السكرول (لكل مشهد) ===== */
+  gsap.utils.toArray('.scene:not(.s-hero)').forEach(scene=>{
+    const sh=scene.querySelectorAll('.shape'); if(!sh.length)return;
+    gsap.set(sh,{scale:0,autoAlpha:0});
+    gsap.to(sh,{scale:1,autoAlpha:1,duration:0.8,stagger:0.08,ease:'back.out(1.7)',scrollTrigger:{trigger:scene,start:'top 75%'}});
+  });
+
+  /* دوران مستمر لكل الأشكال (المثلثات والمربعات والإكسات تلف، الحلقات تدور كامل) */
+  gsap.utils.toArray('.shape').forEach((el,i)=>{
+    const full=el.classList.contains('ring');
+    gsap.to(el,{rotation:(i%2?1:-1)*(full?360:16),duration:full?(18+i%8):(3+Math.random()*2.5),repeat:-1,yoyo:!full,ease:full?'none':'sine.inOut'});
+  });
+
+  /* parallax قوي مع السكرول */
+  gsap.utils.toArray('[data-speed]').forEach(el=>{
+    const sp=parseFloat(el.dataset.speed);
+    gsap.to(el,{yPercent:sp*-26,ease:'none',scrollTrigger:{trigger:el.closest('.scene')||el.closest('.marquee'),start:'top bottom',end:'bottom top',scrub:true}});
+  });
+
+  /* ===== كل الأشكال تتفاعل مع الماوس (مش الدوائر بس) ===== */
+  const shapes=gsap.utils.toArray('.shape');
+  const move=shapes.map(el=>({x:gsap.quickTo(el,'x',{duration:0.9,ease:'power3'}),y:gsap.quickTo(el,'y',{duration:0.9,ease:'power3'})}));
+  window.addEventListener('mousemove',e=>{
+    const mx=(e.clientX/innerWidth-0.5)*2, my=(e.clientY/innerHeight-0.5)*2;
+    shapes.forEach((el,i)=>{const f=((i%4)+1)*15; move[i].x(mx*f); move[i].y(my*f);});
+  });
+
+  /* المارکيه + انحناء حسب سرعة السكرول */
+  const tracks=gsap.utils.toArray('.marquee .track').map((tr,i)=>gsap.to(tr,{xPercent:(i%2?1:-1)*-50,duration:20,repeat:-1,ease:'none'}));
+  const skewArt=gsap.quickTo('.art svg','skewY',{duration:0.5,ease:'power3'});
+  const skewMq=gsap.quickTo('.marquee .track','skewX',{duration:0.5,ease:'power3'});
+  ScrollTrigger.create({onUpdate:self=>{
+    const v=gsap.utils.clamp(-6,6,self.getVelocity()/-260);
+    skewArt(v); skewMq(v);
+    const ts=1+Math.min(Math.abs(self.getVelocity())/1100,3);
+    tracks.forEach(t=>t.timeScale(ts));
+  }});
+
+  /* شريط التقدّم */
+  gsap.to('#progress',{scaleX:1,ease:'none',scrollTrigger:{trigger:document.body,start:'top top',end:'bottom bottom',scrub:0.3}});
+
+  /* نقاط الفصول */
+  const scenes=gsap.utils.toArray('.scene'), dots=document.getElementById('dots'), progress=document.getElementById('progress');
+  scenes.forEach((sc,i)=>{
+    const b=document.createElement('button'); b.title=sc.dataset.scene||('Scene '+(i+1));
+    b.addEventListener('click',()=>{window.__lenis?window.__lenis.scrollTo(sc):sc.scrollIntoView({behavior:'smooth'});});
+    dots.appendChild(b);
+    ScrollTrigger.create({trigger:sc,start:'top center',end:'bottom center',onToggle:self=>{if(self.isActive){
+      dots.querySelectorAll('button').forEach((x,j)=>x.classList.toggle('on',j===i));
+      progress.style.background=sc.dataset.color==='#fff8ee'?'#171734':(sc.dataset.color||'#171734');
+    }}});
+  });
+})();
+</script>
+</body>
+</html>
