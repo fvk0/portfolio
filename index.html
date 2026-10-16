@@ -104,6 +104,13 @@
   .skill .tags{display:flex;flex-wrap:wrap;gap:7px;}
   .skill .tags span{font-size:12.5px;font-weight:500;color:#44465c;background:var(--panel);border-radius:8px;padding:5px 10px;}
 
+  /* core strengths */
+  .strengths{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;max-width:1180px;margin:0 auto;}
+  .strength{background:#fff;border:1px solid var(--line);border-radius:14px;padding:20px 22px;transition:transform .3s,box-shadow .3s;}
+  .strength:hover{transform:translateY(-5px);box-shadow:0 14px 32px rgba(22,22,41,.08);}
+  .strength b{display:block;font-family:var(--d);font-weight:700;font-size:14.5px;margin-bottom:6px;}
+  .strength span{font-size:13px;color:var(--muted);line-height:1.55;}
+
   /* certs + education + languages */
   .cols{display:grid;grid-template-columns:1.4fr 1fr;gap:56px;max-width:1180px;margin:0 auto;}
   @media(max-width:900px){.cols{grid-template-columns:1fr;gap:40px;}}
@@ -165,7 +172,7 @@
   <div class="shape" data-tech="server" data-c="pink" style="width:84px;height:84px;bottom:16%;right:6%" data-speed="-3"></div>
 
   <div style="position:relative;z-index:3;max-width:1180px;margin:0 auto;width:100%;">
-    <div class="avail reveal"><span class="dot"></span> Available Immediately · Transferable Iqama</div>
+    <div class="avail reveal"><span class="dot"></span> Available Immediately · Transferable Iqama · Saudi Driving Licence</div>
     <h1><span class="ln"><span class="hl">FAKHREDIN</span></span><span class="ln"><span class="hl" style="color:var(--indigo)">IBRAHIM</span></span></h1>
     <div class="title reveal">IT Specialist &nbsp;·&nbsp; <b>Systems Administrator</b> &nbsp;·&nbsp; Network &amp; Infrastructure</div>
     <div class="ar reveal">أخصائي تقنية معلومات · مسؤول أنظمة · شبكات وبنية تحتية — الرياض</div>
@@ -184,8 +191,8 @@
   <div class="shape" data-tech="plug" data-c="coral" style="width:78px;height:78px;bottom:16%;left:6%" data-speed="-2.2"></div>
   <div style="position:relative;z-index:3;max-width:1180px;margin:0 auto;">
     <div class="eyebrow reveal"><span class="num">01</span> PROFILE</div>
-    <p class="split">Hands-on IT Specialist running full IT stacks independently, end to end.</p>
-    <p class="full split">Experience spanning <b>Microsoft 365, Azure AD / Entra ID, Active Directory, Linux/Docker environments, networking and unified communications</b> — administering cloud identity, servers, networks, VoIP and physical security end to end for organizations in Riyadh, built on a <b>Network Engineering</b> background in Sudan delivering complete network &amp; CCTV projects. Highly skilled with <b>AI-assisted engineering</b> — using <b>Claude Code</b> and modern AI platforms across <b>VS Code</b> and <b>Linux servers over SSH</b> to automate infrastructure and accelerate delivery. B.Eng. in Electronics Engineering (Networks &amp; Communications), with Cisco CCNA and MCSA foundations. Bilingual Arabic/English with a strong record of autonomous, end-to-end delivery.</p>
+    <p class="split">Hands-on network &amp; systems engineer running full IT and network stacks independently, end to end.</p>
+    <p class="full split">Strong command of <b>Cisco routing &amp; switching</b> — VLANs and 802.1Q trunking, inter-VLAN routing, STP/RSTP, EtherChannel and first-hop redundancy (HSRP/VRRP) — with <b>OSPF, EIGRP, ACLs, NAT and DHCP</b> on Cisco IOS / IOS XE, plus TCP/IP, IPv4 subnetting, structured troubleshooting and <b>Zabbix</b> monitoring. This sits on a full IT stack — <b>Microsoft 365, Azure AD / Entra ID, Active Directory, Windows Server and Linux/Docker</b> — alongside wireless, unified communications, CCTV and structured cabling (copper, fiber, SFP, Fluke-tested). Built on a <b>Network Engineering</b> background in Sudan delivering data-center, firewall and infrastructure projects for government bodies and major enterprises. Highly skilled with <b>AI-assisted engineering</b> — using <b>Claude Code</b> and modern AI platforms across <b>VS Code</b> and <b>Linux servers over SSH</b> to automate infrastructure and accelerate delivery. B.Eng. in Electronics Engineering (Networks &amp; Communications), with <b>Cisco CCNA</b> and MCSA foundations; bilingual Arabic/English with a record of autonomous, end-to-end delivery.</p>
   </div>
 </section>
 
@@ -204,11 +211,12 @@
       <h3 class="reveal">Fahad Alabdulqader Law Firm</h3>
       <div class="where reveal">faafirm.com · Riyadh, Saudi Arabia</div>
       <ul>
-        <li class="reveal">Administer the <b>Microsoft 365</b> tenant — user lifecycle, licensing, security policies, Exchange mail flow, and SPF/DKIM/DMARC.</li>
-        <li class="reveal">Manage the corporate website (faafirm.com): <b>hosting, DNS, SSL, performance &amp; SEO</b>; produce bilingual AR/EN legal content with Rank Math.</li>
-        <li class="reveal">Own end-user support, hardware/software procurement, asset management &amp; vendor coordination.</li>
-        <li class="reveal">Delivered a full <b>Google Analytics</b> audit with a content &amp; traffic strategy report guiding the firm's digital roadmap.</li>
-        <li class="reveal">Built &amp; maintain a custom <b>Odoo 18</b> module (14 models, role-based access) for case, client &amp; document management.</li>
+        <li class="reveal">Sole IT lead for the firm's full network &amp; IT environment — <b>routing/switching, Wi-Fi, firewalls, Windows Server, Microsoft 365 / Entra ID and Active Directory</b> — keeping connectivity, performance and uptime.</li>
+        <li class="reveal">Manage user accounts, permissions, <b>GPOs</b> and Exchange mail flow with <b>SPF/DKIM/DMARC</b>, applying secure device management and access control.</li>
+        <li class="reveal">Maintain servers, a <b>Synology NAS</b>, configuration backups, antivirus and endpoint security, with network &amp; asset documentation and vendor escalations.</li>
+        <li class="reveal">Designed &amp; built a custom <b>Odoo</b> system (case, hearing, client &amp; document management on PostgreSQL), deployed a <b>CRM</b> and rolled out <b>AI assistant tooling</b> for the firm.</li>
+        <li class="reveal">Built &amp; manage the firm's website and legal blog (Arabic content + SEO) and automated bilingual email campaigns via <b>Power Automate</b> with Excel.</li>
+        <li class="reveal">Provide first- and second-line support, train staff, maintain SOPs and work within strict confidentiality requirements.</li>
       </ul>
     </div>
     <div class="xp-art reveal">
@@ -235,12 +243,12 @@
       <h3 class="reveal">Aqaalem for Operation &amp; Maintenance</h3>
       <div class="where reveal">Riyadh, Saudi Arabia</div>
       <ul>
-        <li class="reveal">Administer the <b>Active Directory</b> domain — users, groups, GPOs, DNS, DHCP — and deployed RustDesk remote support via Group Policy.</li>
-        <li class="reveal">Designed &amp; operate a <b>Grandstream UCM6302 IP-PBX</b> with a bilingual (AR/EN) IVR routing the call center.</li>
-        <li class="reveal">Manage <b>Ubuntu/Docker</b> servers (ERP, CRM, internal tools); executed an STC fiber + <b>MikroTik PCC</b> load-balancing migration with Cisco VLAN segmentation.</li>
-        <li class="reveal">Lead <b>CCTV, access control (ZKTeco)</b> &amp; physical security across sites, with enrollment &amp; attendance integration.</li>
-        <li class="reveal">Recovered the company website after an SSL/hosting failure via <b>Cloudflare</b> migration with zero data loss.</li>
-        <li class="reveal">Built a comprehensive <b>Odoo ERP</b> (Projects, Fleet, Accommodations, Maintenance, Expenses, Archiving — 17 tables).</li>
+        <li class="reveal">Administer end-to-end network infrastructure across multiple sites — <b>Cisco switches</b> (VLANs, trunking, inter-VLAN routing, STP, EtherChannel), <b>MikroTik routers</b> (static &amp; dynamic routing), access points and firewalls.</li>
+        <li class="reveal">Planned &amp; implemented a network migration over <b>STC fiber</b> with <b>MikroTik PCC</b> load balancing and Cisco VLAN segmentation, improving reliability and bandwidth utilization.</li>
+        <li class="reveal">Deployed &amp; operate <b>Zabbix</b> to monitor Windows/Linux servers, Cisco switches and MikroTik routers — tracking performance, interface status, availability and severity-based alerts.</li>
+        <li class="reveal">Administer the <b>Active Directory</b> domain (users, groups, GPOs, DNS, DHCP) and manage <b>Ubuntu/Docker</b> servers over SSH/VPN.</li>
+        <li class="reveal">Designed &amp; operate a <b>Grandstream UCM6302 IP-PBX</b> and manage <b>CCTV and ZKTeco</b> access control across sites.</li>
+        <li class="reveal">Handle configuration backups, firmware upgrades and disaster recovery, and recovered the corporate website after an SSL/hosting failure via <b>Cloudflare</b> with zero data loss.</li>
       </ul>
     </div>
     <div class="xp-art reveal">
@@ -265,17 +273,18 @@
   <div class="xp-divider"></div>
 
   <!-- Role 3 -->
-  <div class="xp" style="margin:70px 0 0;">
+  <div class="xp" style="margin:70px 0;">
     <div class="xp-text">
       <span class="role-tag reveal" style="background:var(--pink)">NETWORK ENGINEER</span>
       <h3 class="reveal">AZ Technology Co. Ltd</h3>
-      <div class="where reveal">Sudan · Jul 2022 — Oct 2023</div>
+      <div class="where reveal">Khartoum, Sudan · Jul 2022 — Oct 2023</div>
       <ul>
-        <li class="reveal">Installed &amp; configured <b>switches, routers, access points &amp; CCTV</b> across client sites.</li>
-        <li class="reveal">Managed full network projects — <b>cabling, termination, labeling &amp; patch-panel</b> work — to standards-compliant quality.</li>
-        <li class="reveal">Inspected, tested &amp; documented network infrastructure &amp; CCTV for reliability and uptime.</li>
-        <li class="reveal">Installed &amp; maintained IP cameras &amp; <b>biometric access control</b>, integrated with security &amp; attendance.</li>
-        <li class="reveal">Performed <b>Fluke</b> performance testing (speed, signal, reliability) before client handover.</li>
+        <li class="reveal">Installed, configured &amp; supported <b>Cisco switches, routers &amp; access points</b> across full network projects for government bodies and major enterprises — with design, testing and documentation before handover.</li>
+        <li class="reveal">Designed &amp; deployed LAN infrastructure — <b>VLANs, trunking, inter-VLAN routing, STP/RSTP, EtherChannel</b> and routing (static &amp; OSPF) — with structured cabling (copper, fiber, patch panels, SFP), IP addressing and subnetting.</li>
+        <li class="reveal">Rehabilitated complete <b>data centers</b> at the General Directorate of Thermal Power Generation and the Haggar Group factory — rack installation, cabling and device configuration.</li>
+        <li class="reveal">Installed <b>firewalls</b> at the Ministry of Federal Governance and delivered a full infrastructure project for the General Administration of Medical Insurance, applying network security.</li>
+        <li class="reveal">Deployed wireless APs at the Taxation Chamber, tested outlets at Savola, University of Khartoum and the Ministry of Oil, ran a UPS project at the Zakat Chamber and a fire-alarm system at Bank of Khartoum HQ.</li>
+        <li class="reveal">Installed <b>CCTV &amp; biometric access control</b>, performed <b>Fluke</b> testing and prepared network diagrams &amp; configuration records for every project.</li>
       </ul>
     </div>
     <div class="xp-art reveal">
@@ -292,6 +301,53 @@
       </svg>
     </div>
   </div>
+
+  <div class="xp-divider"></div>
+
+  <!-- Role 4 -->
+  <div class="xp flip" style="margin:70px 0 0;">
+    <div class="xp-text">
+      <span class="role-tag reveal" style="background:var(--amber)">IT SPECIALIST</span>
+      <h3 class="reveal">Cans Hotel</h3>
+      <div class="where reveal">Sudan · Jan 2021 — Feb 2022</div>
+      <ul>
+        <li class="reveal">Provided daily IT &amp; network support in a live <b>24/7 hotel</b> — keeping guest-facing and back-office systems and connectivity running with fast resolution.</li>
+        <li class="reveal">Installed, configured &amp; maintained computers, printers, peripherals and <b>guest &amp; event Wi-Fi</b> across rooms, meeting spaces and back-office areas.</li>
+        <li class="reveal">Managed user accounts, access permissions and network systems throughout the hotel, and coordinated cabling &amp; device setup.</li>
+        <li class="reveal">Installed &amp; monitored <b>CCTV</b> and on-site security systems and supported access for staff and guests.</li>
+        <li class="reveal">Set up IT equipment for events and meetings and coordinated with suppliers on equipment, services and asset-custody records.</li>
+      </ul>
+    </div>
+    <div class="xp-art reveal">
+      <svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+        <rect x="92" y="64" width="150" height="196" rx="12" fill="#161629"/>
+        <rect x="92" y="64" width="150" height="30" rx="12" fill="#ff9f1c"/>
+        <rect x="92" y="82" width="150" height="12" fill="#ff9f1c"/>
+        <g fill="#2a2a45">
+          <rect x="108" y="112" width="26" height="22" rx="4"/><rect x="146" y="112" width="26" height="22" rx="4"/><rect x="184" y="112" width="26" height="22" rx="4"/>
+          <rect x="108" y="146" width="26" height="22" rx="4"/><rect x="146" y="146" width="26" height="22" rx="4"/><rect x="184" y="146" width="26" height="22" rx="4"/>
+          <rect x="108" y="180" width="26" height="22" rx="4"/><rect x="146" y="180" width="26" height="22" rx="4"/><rect x="184" y="180" width="26" height="22" rx="4"/>
+        </g>
+        <rect x="146" y="112" width="26" height="22" rx="4" fill="#12b8a2" class="blink"/>
+        <rect x="184" y="146" width="26" height="22" rx="4" fill="#2aa7ff" class="blink d1"/>
+        <rect x="108" y="180" width="26" height="22" rx="4" fill="#ff5e8a" class="blink d2"/>
+        <rect x="146" y="216" width="42" height="44" rx="6" fill="#4b3bff"/>
+        <g fill="none" stroke="#ff5e8a" stroke-width="6" stroke-linecap="round">
+          <path d="M146 50 a40 40 0 0 1 42 0"/>
+          <path d="M156 36 a24 24 0 0 1 22 0"/>
+        </g>
+        <circle cx="167" cy="56" r="5" fill="#ff5e8a" class="pulse"/>
+        <rect x="266" y="150" width="88" height="62" rx="9" fill="#161629"/>
+        <rect x="278" y="162" width="64" height="38" rx="6" fill="#2a2a45"/>
+        <path d="M290 186 l11 -13 9 9 12 -16 11 20" fill="none" stroke="#12b8a2" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+        <rect x="300" y="212" width="20" height="10" fill="#161629"/>
+        <rect x="284" y="222" width="52" height="7" rx="3" fill="#161629"/>
+        <path d="M296 122 a16 16 0 0 1 32 0 Z" fill="#ff9f1c"/>
+        <rect x="292" y="122" width="40" height="6" rx="3" fill="#ff9f1c"/>
+        <circle cx="312" cy="102" r="4" fill="#ff9f1c"/>
+      </svg>
+    </div>
+  </div>
 </section>
 
 <!-- ============ SKILLS ============ -->
@@ -303,13 +359,25 @@
     <h2 class="split">Tools &amp; technologies</h2>
   </div>
   <div class="skills">
+    <div class="skill reveal"><div class="ic" style="background:var(--indigo)"><svg viewBox="0 0 64 64" fill="currentColor"><rect x="8" y="24" width="48" height="18" rx="4"/><g fill="#fff"><rect x="13" y="29" width="6" height="7" rx="1"/><rect x="22" y="29" width="6" height="7" rx="1"/><rect x="31" y="29" width="6" height="7" rx="1"/><rect x="40" y="29" width="6" height="7" rx="1"/></g><circle cx="50" cy="32.5" r="3" fill="#fff"/></svg></div><h4>Routing &amp; Switching</h4><div class="tags"><span>Cisco IOS / IOS XE CLI</span><span>VLANs &amp; 802.1Q Trunking</span><span>Inter-VLAN Routing</span><span>STP / RSTP</span><span>EtherChannel (LACP)</span><span>HSRP / VRRP</span><span>OSPF · EIGRP</span><span>ACLs · NAT/PAT · DHCP</span><span>IPv4 Subnetting</span></div></div>
+    <div class="skill reveal"><div class="ic" style="background:var(--blue)"><svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="4"><circle cx="32" cy="32" r="22"/><path d="M10 32 h44 M32 10 c10 10 10 34 0 44 c-10 -10 -10 -34 0 -44"/></svg></div><h4>Networking &amp; Infrastructure</h4><div class="tags"><span>TCP/IP · LAN/WAN</span><span>MikroTik · PCC</span><span>STC Fiber</span><span>Firewalls / VPN</span><span>Copper &amp; Fiber · SFP</span><span>Patch Panels · Rack</span><span>Fluke Testing</span><span>Zabbix Monitoring</span></div></div>
+    <div class="skill reveal"><div class="ic" style="background:var(--teal)"><svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 38 a16 16 0 0 1 10 -28 a18 18 0 0 1 30 10"/><path d="M12 40 h28"/><circle cx="46" cy="46" r="9"/></svg></div><h4>Wireless</h4><div class="tags"><span>Access Points</span><span>Wireless Controllers</span><span>Wi-Fi Survey</span><span>Guest / Event Wi-Fi</span></div></div>
     <div class="skill reveal"><div class="ic" style="background:var(--blue)"><svg viewBox="0 0 64 64" fill="currentColor"><path d="M20 46 a12 12 0 0 1 1 -24 a14 14 0 0 1 27 4 a10 10 0 0 1 -4 20 Z"/></svg></div><h4>Cloud &amp; Productivity</h4><div class="tags"><span>Microsoft 365</span><span>Azure AD / Entra</span><span>Exchange Online</span><span>SharePoint</span><span>Intune</span></div></div>
-    <div class="skill reveal"><div class="ic" style="background:var(--pink)"><svg viewBox="0 0 64 64" fill="currentColor"><rect x="14" y="12" width="36" height="12" rx="3"/><rect x="14" y="28" width="36" height="12" rx="3"/><rect x="14" y="44" width="36" height="12" rx="3"/></svg></div><h4>Servers &amp; OS</h4><div class="tags"><span>Windows Server</span><span>Active Directory</span><span>Group Policy</span><span>DNS / DHCP</span><span>Ubuntu</span><span>Docker</span></div></div>
-    <div class="skill reveal"><div class="ic" style="background:var(--indigo)"><svg viewBox="0 0 64 64" fill="currentColor"><rect x="8" y="26" width="48" height="16" rx="4"/><g fill="#fff"><rect x="13" y="31" width="6" height="6" rx="1"/><rect x="22" y="31" width="6" height="6" rx="1"/><rect x="31" y="31" width="6" height="6" rx="1"/></g></svg></div><h4>Networking</h4><div class="tags"><span>Cisco VLANs</span><span>MikroTik PCC</span><span>Firewalls / VPN</span><span>Wi-Fi Design</span><span>STC Fiber</span></div></div>
-    <div class="skill reveal"><div class="ic" style="background:var(--teal)"><svg viewBox="0 0 64 64" fill="currentColor"><rect x="20" y="10" width="24" height="44" rx="6"/><rect x="26" y="46" width="12" height="4" rx="2" fill="#fff"/><circle cx="32" cy="20" r="4" fill="#fff"/></svg></div><h4>Unified Comms</h4><div class="tags"><span>Grandstream UCM</span><span>IVR Design</span><span>SIP Trunking</span><span>Call Routing</span></div></div>
+    <div class="skill reveal"><div class="ic" style="background:var(--pink)"><svg viewBox="0 0 64 64" fill="currentColor"><rect x="14" y="12" width="36" height="12" rx="3"/><rect x="14" y="28" width="36" height="12" rx="3"/><rect x="14" y="44" width="36" height="12" rx="3"/></svg></div><h4>Servers &amp; OS</h4><div class="tags"><span>Windows Server</span><span>Active Directory</span><span>Group Policy</span><span>DNS / DHCP</span><span>Ubuntu · Docker</span><span>Synology NAS</span></div></div>
+    <div class="skill reveal"><div class="ic" style="background:var(--teal)"><svg viewBox="0 0 64 64" fill="currentColor"><rect x="20" y="10" width="24" height="44" rx="6"/><rect x="26" y="46" width="12" height="4" rx="2" fill="#fff"/><circle cx="32" cy="20" r="4" fill="#fff"/></svg></div><h4>Unified Comms</h4><div class="tags"><span>Grandstream UCM6302</span><span>IVR Design</span><span>SIP Trunking</span><span>Call Routing</span></div></div>
     <div class="skill reveal"><div class="ic" style="background:var(--coral)"><svg viewBox="0 0 64 64" fill="currentColor"><path d="M32 8 L52 16 V32 C52 44 43 52 32 56 C21 52 12 44 12 32 V16 Z"/></svg></div><h4>Security &amp; ELV</h4><div class="tags"><span>CCTV</span><span>ZKTeco Access</span><span>Backup &amp; DR</span><span>SSL/TLS · MFA</span><span>Conditional Access</span></div></div>
-    <div class="skill reveal"><div class="ic" style="background:var(--amber)"><svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"><path d="M24 20 L12 32 L24 44"/><path d="M40 20 L52 32 L40 44"/></svg></div><h4>Development &amp; Automation</h4><div class="tags"><span>Python</span><span>PostgreSQL</span><span>Bash</span><span>PowerShell</span><span>Odoo Dev</span></div></div>
-    <div class="skill reveal"><div class="ic" style="background:var(--purple)"><svg viewBox="0 0 64 64" fill="currentColor"><path d="M32 8 L36 25 L52 29 L36 33 L32 50 L28 33 L12 29 L28 25 Z"/><circle cx="50" cy="12" r="3"/><circle cx="15" cy="47" r="2.5"/></svg></div><h4>AI &amp; Developer Tools</h4><div class="tags"><span>Claude Code</span><span>AI Platforms</span><span>Prompt Engineering</span><span>VS Code</span><span>Linux Servers</span><span>SSH</span><span>Git</span></div></div>
+    <div class="skill reveal"><div class="ic" style="background:var(--amber)"><svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"><path d="M24 20 L12 32 L24 44"/><path d="M40 20 L52 32 L40 44"/></svg></div><h4>Development &amp; Automation</h4><div class="tags"><span>Python</span><span>PostgreSQL</span><span>Bash · PowerShell</span><span>Odoo Dev</span><span>Power Automate</span></div></div>
+    <div class="skill reveal"><div class="ic" style="background:var(--purple)"><svg viewBox="0 0 64 64" fill="currentColor"><path d="M32 8 L36 25 L52 29 L36 33 L32 50 L28 33 L12 29 L28 25 Z"/><circle cx="50" cy="12" r="3"/><circle cx="15" cy="47" r="2.5"/></svg></div><h4>AI &amp; Developer Tools</h4><div class="tags"><span>Claude Code</span><span>AI Platforms</span><span>Prompt Engineering</span><span>VS Code</span><span>Linux · SSH</span><span>Git</span></div></div>
+  </div>
+
+  <div style="position:relative;z-index:3;max-width:1180px;margin:50px auto 22px;">
+    <div class="eyebrow reveal">CORE STRENGTHS</div>
+  </div>
+  <div class="strengths">
+    <div class="strength reveal"><b>Analytical &amp; Problem-Solving</b><span>Systematic fault diagnosis and the judgment to escalate complex issues appropriately.</span></div>
+    <div class="strength reveal"><b>Communication (AR / EN)</b><span>Translates technical detail into clear language for customers and internal teams.</span></div>
+    <div class="strength reveal"><b>Reliability &amp; Ownership</b><span>Dependable and detail-oriented; takes tasks through to closure.</span></div>
+    <div class="strength reveal"><b>Teamwork &amp; Service</b><span>Collaborative with a strong customer-service attitude, calm under pressure.</span></div>
   </div>
 </section>
 
