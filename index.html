@@ -961,13 +961,13 @@ window.addEventListener('load',()=>setTimeout(()=>{const l=document.getElementBy
 
   /* ---------- primitive moves ---------- */
   const busy=(t,c,on)=>t.call(()=>{c.busy=Math.max(0,c.busy+(on?1:-1));if(c.fade){c.fade.kill();c.fade=null;}
-    if(!on&&c.busy===0)c.fade=gsap.timeline({delay:.5}).to(c.el,{opacity:.55,duration:.3}).to(c.el,{opacity:0,duration:.6},'+=1.4');});
+    if(!on&&c.busy===0)c.fade=gsap.timeline({delay:.5}).to(c.el,{opacity:.6,duration:.4}).to(c.el,{opacity:0,duration:.8},'+=2.6');});
   const approach=(c,x,y)=>{const dy=y-cy(c);if(Math.abs(dy)>innerHeight*.9){gsap.set(c.el,{x:x+gsap.utils.random(-120,120),y:y-Math.sign(dy)*innerHeight*.5});}};
-  const mv=(c,x,y,d=.6)=>{const t=gsap.timeline();t.call(()=>{if(c.fade){c.fade.kill();c.fade=null;}approach(c,x,y);});t.to(c.el,{x,y,opacity:1,duration:d*.75,ease:'power3.inOut',overwrite:'auto'});return t;};
+  const mv=(c,x,y,d=.6)=>{const t=gsap.timeline();t.call(()=>{if(c.fade){c.fade.kill();c.fade=null;}approach(c,x,y);});t.to(c.el,{x,y,opacity:1,duration:d*1.1,ease:'power3.inOut',overwrite:'auto'});return t;};
   const click=c=>{const t=gsap.timeline();
     t.call(()=>{const p=mk('rp');gsap.set(p,{x:cx(c),y:cy(c)});gsap.fromTo(p,{scale:.2,opacity:.9},{scale:1.5,opacity:0,duration:.45,onComplete:()=>p.remove()});});
     t.to(c.svg,{scale:.72,duration:.07,transformOrigin:'0 0'},0).to(c.svg,{scale:1,duration:.16});return t;};
-  const chip=(c,txt,hold=.3)=>{const t=gsap.timeline();t.call(()=>{c.chip.textContent=txt;})
+  const chip=(c,txt,hold=.5)=>{const t=gsap.timeline();t.call(()=>{c.chip.textContent=txt;})
     .fromTo(c.chip,{autoAlpha:0,scale:.6},{autoAlpha:1,scale:1,duration:.15,ease:'back.out(2)',transformOrigin:'0 0'}).to(c.chip,{autoAlpha:0,duration:.18},'+='+hold);return t;};
   const selBox=r=>{const b=mk('sb',`<i></i><i></i><i></i><i></i><span class="dim">${Math.round(r.w)} × ${Math.round(r.h)}</span>`);
     Object.assign(b.style,{left:r.x+'px',top:r.y+'px',width:r.w+'px',height:r.h+'px'});gsap.set(b,{autoAlpha:0});return b;};
@@ -980,7 +980,7 @@ window.addEventListener('load',()=>setTimeout(()=>{const l=document.getElementBy
   const hideType=el=>{if(!el)return;mark(el);gsap.set(split(el),{visibility:'hidden'});};
   function typeIn(c,el,cps=36){const t=gsap.timeline();if(!el)return t;const all=split(el);const r=R(el);const caret=mk('caret');gsap.set(caret,{autoAlpha:0});
     busy(t,c,1);t.add(mv(c,r.x-6,r.y+Math.min(r.h*.45,40),.55));t.add(click(c));t.add(chip(c,'Typing…',.35),'<');t.set(caret,{autoAlpha:1});
-    const step=1/(cps*1.5);let k=0;
+    const step=1/(cps*1.05);let k=0;
     all.forEach(s=>{const real=!!s.textContent.trim();if(real)k++;const kk=k;
       t.call(()=>{s.style.visibility='visible';if(!real)return;const b=s.getBoundingClientRect();
         gsap.set(caret,{x:b.right+scrollX+1,y:b.top+scrollY+b.height*.1,height:b.height*.8});
@@ -1060,14 +1060,14 @@ window.addEventListener('load',()=>setTimeout(()=>{const l=document.getElementBy
   /* ---------- scenes ---------- */
   const scenes=[];
   const scene=(trig,init,build)=>{if(!trig)return;init();scenes.push({trig,build,start:'top 97%',done:false});};
-  const BASE=1.4,active=new Set();
+  const BASE=.85,active=new Set();
   const track=(t,trig)=>{const o={t,trig};active.add(o);t.eventCallback('onComplete',()=>active.delete(o));};
   let lastY=scrollY,lastT=performance.now(),vel=0;
   function catchUp(){const now=performance.now(),dt=Math.max(16,now-lastT);vel=vel*.6+Math.abs(scrollY-lastY)/dt*1000*.4;lastY=scrollY;lastT=now;
-    const quick=vel>innerHeight*.9;
+    const quick=vel>innerHeight*2.4;
     active.forEach(o=>{const r=o.trig.getBoundingClientRect();let ts=BASE;
-      if(r.bottom<innerHeight*.5)ts=16;else if(r.top<0)ts=7;else if(r.top<innerHeight*.25)ts=4;else if(r.top<innerHeight*.5)ts=2.4;
-      if(quick)ts=Math.max(ts,5);
+      if(r.bottom<innerHeight*.25)ts=10;else if(r.top<-innerHeight*.5)ts=2.5;else if(r.top<-innerHeight*.2)ts=1.4;
+      if(quick)ts=Math.max(ts,3);
       if(o.t.timeScale()<ts)o.t.timeScale(ts);});}
   let ticking=false;addEventListener('scroll',()=>{if(ticking)return;ticking=true;requestAnimationFrame(()=>{ticking=false;catchUp();});},{passive:true});
   function run(s){if(s.done)return;s.done=true;const t=gsap.timeline();s.build(t);const r=s.trig.getBoundingClientRect();
@@ -1180,7 +1180,7 @@ window.addEventListener('load',()=>setTimeout(()=>{const l=document.getElementBy
     gsap.timeline({delay:.2})
       .to('#loader',{yPercent:-100,duration:.75,ease:'power4.inOut'})
       .set('#loader',{display:'none'})
-      .add((()=>{const h=buildHero();h.timeScale(1.25);track(h,$('.hero'));return h;})(),'-=.3')
+      .add((()=>{const h=buildHero();h.timeScale(.9);track(h,$('.hero'));return h;})(),'-=.3')
       .call(()=>{},null,'<');
     setTimeout(()=>{ScrollTrigger.refresh();scenes.forEach(s=>{
       ScrollTrigger.create({trigger:s.trig,start:s.start,once:true,onEnter:()=>run(s)});
