@@ -1059,15 +1059,17 @@ window.addEventListener('load',()=>setTimeout(()=>{const l=document.getElementBy
 
   /* ---------- scenes ---------- */
   const scenes=[];
-  const scene=(trig,init,build)=>{if(!trig)return;init();scenes.push({trig,build,start:'top 97%',done:false});};
-  const BASE=.85,active=new Set();
+  const scene=(trig,init,build)=>{if(!trig)return;init();scenes.push({trig,build,start:'top 72%',done:false});};
+  /* TEMPO — build speed of the cursors: 1 = fast, .55 = current, smaller = slower */
+  const TEMPO=.55;
+  const BASE=TEMPO,active=new Set();
   const track=(t,trig)=>{const o={t,trig};active.add(o);t.eventCallback('onComplete',()=>active.delete(o));};
   let lastY=scrollY,lastT=performance.now(),vel=0;
   function catchUp(){const now=performance.now(),dt=Math.max(16,now-lastT);vel=vel*.6+Math.abs(scrollY-lastY)/dt*1000*.4;lastY=scrollY;lastT=now;
-    const quick=vel>innerHeight*2.4;
+    const quick=vel>innerHeight*3.5;
     active.forEach(o=>{const r=o.trig.getBoundingClientRect();let ts=BASE;
-      if(r.bottom<innerHeight*.25)ts=10;else if(r.top<-innerHeight*.5)ts=2.5;else if(r.top<-innerHeight*.2)ts=1.4;
-      if(quick)ts=Math.max(ts,3);
+      if(r.bottom<innerHeight*.15)ts=8;else if(r.top<-innerHeight*.6)ts=1.6;
+      if(quick)ts=Math.max(ts,2.5);
       if(o.t.timeScale()<ts)o.t.timeScale(ts);});}
   let ticking=false;addEventListener('scroll',()=>{if(ticking)return;ticking=true;requestAnimationFrame(()=>{ticking=false;catchUp();});},{passive:true});
   function run(s){if(s.done)return;s.done=true;const t=gsap.timeline();s.build(t);const r=s.trig.getBoundingClientRect();
@@ -1180,11 +1182,11 @@ window.addEventListener('load',()=>setTimeout(()=>{const l=document.getElementBy
     gsap.timeline({delay:.2})
       .to('#loader',{yPercent:-100,duration:.75,ease:'power4.inOut'})
       .set('#loader',{display:'none'})
-      .add((()=>{const h=buildHero();h.timeScale(.9);track(h,$('.hero'));return h;})(),'-=.3')
+      .add((()=>{const h=buildHero();h.timeScale(TEMPO*1.15);track(h,$('.hero'));return h;})(),'-=.3')
       .call(()=>{},null,'<');
     setTimeout(()=>{ScrollTrigger.refresh();scenes.forEach(s=>{
       ScrollTrigger.create({trigger:s.trig,start:s.start,once:true,onEnter:()=>run(s)});
-      if(s.trig.getBoundingClientRect().top<innerHeight*.97)run(s);});},500);
+      if(s.trig.getBoundingClientRect().top<innerHeight*.72)run(s);});},500);
   });
 })();
 </script>
